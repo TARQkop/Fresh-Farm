@@ -1,11 +1,14 @@
-/** @type {import("next").NextConfig} */
+ /** @type {import("next").NextConfig} */
 
 const nextConfig = {
   output: "export",
 
-  allowedDevOrigins: ['192.168.56.1'],
+  basePath: "/Fresh-Farm",
+
+  allowedDevOrigins: ["192.168.56.1"],
 
   images: {
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
 
     remotePatterns: [
