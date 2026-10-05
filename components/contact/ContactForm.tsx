@@ -51,7 +51,7 @@ export function ContactForm() {
     </div>
   );
   const field = (id: keyof Values, label: string, props: Fieldish = {}, area = false) => {
-    const cls = "w-full rounded-lg border bg-white px-4 text-base outline-none transition focus:border-ink focus:ring-2 focus:ring-orange/40 " + (errors[id] ? "border-red-600" : "border-line");
+    const cls = "w-full rounded-lg border bg-white px-4 text-base outline-none t-hover focus:border-ink focus:ring-2 focus:ring-orange/40 " + (errors[id] ? "border-red-600" : "border-line");
     const common = { id, name: id, "aria-invalid": !!errors[id], "aria-describedby": errors[id] ? `${id}-err` : undefined };
     return (
       <div>
@@ -67,7 +67,7 @@ export function ContactForm() {
       <div>
         <div role="group" aria-label="How should we reach you?" className="mb-3 flex gap-2">
           {(["phone", "email"] as const).map((m) => (
-            <button key={m} type="button" aria-pressed={mode === m} onClick={() => setMode(m)} className={cn("min-h-11 flex-1 rounded-lg border px-4 text-sm font-semibold capitalize transition-colors sm:flex-none", mode === m ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink active:bg-cream")}>{m}</button>
+            <button key={m} type="button" aria-pressed={mode === m} onClick={() => setMode(m)} className={cn("t-hover min-h-11 flex-1 rounded-lg border px-4 text-sm font-semibold capitalize active:scale-[.98] sm:flex-none", mode === m ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink active:bg-cream")}>{m}</button>
           ))}
         </div>
         {mode === "phone"

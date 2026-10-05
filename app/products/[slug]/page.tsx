@@ -28,8 +28,8 @@ export default async function ProductPage({ params }: Params) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <div className="container-x py-3 sm:py-12">
         <nav aria-label="Breadcrumb" className="mb-2 flex flex-nowrap items-center gap-1 overflow-hidden whitespace-nowrap text-sm text-muted sm:mb-6">
-          <Link href="/products" className="inline-flex min-h-11 shrink-0 items-center hover:text-ink">Products</Link><ChevronRight size={14} aria-hidden className="shrink-0" />
-          <Link href={`/products?category=${p.category}`} className="inline-flex min-h-11 shrink-0 items-center hover:text-ink">{cat?.name}</Link><ChevronRight size={14} aria-hidden className="shrink-0" /><span className="min-w-0 truncate text-ink" aria-current="page">{p.name}</span>
+          <Link href="/products" className="t-hover inline-flex min-h-11 shrink-0 items-center hover:text-ink">Products</Link><ChevronRight size={14} aria-hidden className="shrink-0" />
+          <Link href={`/products?category=${p.category}`} className="t-hover inline-flex min-h-11 shrink-0 items-center hover:text-ink">{cat?.name}</Link><ChevronRight size={14} aria-hidden className="shrink-0" /><span className="min-w-0 truncate text-ink" aria-current="page">{p.name}</span>
         </nav>
         <div className="grid gap-5 sm:gap-8 lg:grid-cols-2 lg:gap-14">
           <div className="relative aspect-[4/3] max-h-[42dvh] overflow-hidden rounded-2xl bg-cream sm:aspect-square lg:aspect-[4/5] lg:max-h-none lg:sticky lg:top-28 lg:self-start">

@@ -4,7 +4,7 @@ import { nav, site } from "@/lib/site";
 import { categories } from "@/data/categories";
 export function Footer() {
   const h = "mb-2 text-xs font-semibold uppercase tracking-[.18em] text-orange lg:mb-4";
-  const l = "inline-flex min-h-11 items-center text-white/70 transition-colors hover:text-orange active:text-orange lg:min-h-0";
+  const l = "t-hover inline-flex min-h-11 items-center text-white/70 hover:text-orange active:text-orange motion-safe:hover:translate-x-0.5 lg:min-h-0";
   return (
     <footer className="bg-ink text-white">
       <div className="container-x grid grid-cols-2 gap-x-6 gap-y-8 py-10 sm:gap-10 sm:py-14 lg:grid-cols-4 lg:py-20">
@@ -12,8 +12,8 @@ export function Footer() {
           <p className="h-display text-3xl">{site.name}<span className="text-orange">.</span></p>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{site.description}</p>
           <div className="mt-4 flex gap-2 lg:mt-5">
-            <a aria-label="Instagram" href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="grid size-11 place-items-center rounded-lg border border-white/15 hover:border-orange hover:text-orange"><Instagram size={18} /></a>
-            <a aria-label="Facebook" href={site.social.facebook} target="_blank" rel="noopener noreferrer" className="grid size-11 place-items-center rounded-lg border border-white/15 hover:border-orange hover:text-orange"><Facebook size={18} /></a>
+            <a aria-label="Instagram" href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="t-hover grid size-11 place-items-center rounded-lg border border-white/15 hover:border-orange hover:text-orange motion-safe:hover:-translate-y-0.5 active:scale-[.96]"><Instagram size={18} /></a>
+            <a aria-label="Facebook" href={site.social.facebook} target="_blank" rel="noopener noreferrer" className="t-hover grid size-11 place-items-center rounded-lg border border-white/15 hover:border-orange hover:text-orange motion-safe:hover:-translate-y-0.5 active:scale-[.96]"><Facebook size={18} /></a>
           </div>
         </div>
         <nav aria-label="Footer"><h3 className={h}>Explore</h3><ul className="space-y-1 text-sm lg:space-y-3">{nav.map((n) => <li key={n.href}><Link className={l} href={n.href}>{n.label}</Link></li>)}</ul></nav>

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#161513", width: "device-width", initialScale: 1, viewportFit: "cover" };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${display.variable} ${sans.variable}`}>
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-orange focus:px-4 focus:py-2 focus:text-ink">Skip to content</a>
         <Navbar /><main id="main">{children}</main><Footer /><MobileActionBar />

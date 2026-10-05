@@ -1,14 +1,16 @@
 import Link from "next/link";
-import { Leaf, ShieldCheck, MapPin, Sparkles, HeartHandshake, BadgeCheck, Phone, MessageCircle, ArrowRight } from "lucide-react";
+import { Leaf, ShieldCheck, MapPin, Sparkles, HeartHandshake, BadgeCheck, Phone, MessageCircle, ArrowRight, ArrowUpRight } from "lucide-react";
 import { categories } from "@/data/categories";
 import { images } from "@/data/images";
 import { getFeatured } from "@/lib/products";
 import { site, whatsappLink } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { Marquee } from "@/components/ui/Marquee";
+import { stagger } from "@/lib/motion";
 import { AppImage } from "@/components/ui/AppImage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ProductGrid } from "@/components/products/ProductGrid";
+import { ProductCard } from "@/components/products/ProductCard";
 
 export function Hero() {
   return (
@@ -34,15 +36,31 @@ export function Hero() {
   );
 }
 
-export function FeaturedProducts() {
+const highlights = ["Fresh daily", "Local production", "Small batches", "Carefully packed", "Trusted service"];
+// Thin dark belt directly under the Hero (belt a): slow, 55s per pass, orange separators.
+export function HighlightStrip() {
   return (
-    <section className="py-12 sm:py-24"><div className="container-x">
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-1 sm:mb-10">
-        <SectionHeading eyebrow="Our selection" title="Favourites from our shelves" />
-        <Link href="/products" className="inline-flex min-h-11 items-center gap-1 font-semibold hover:text-orange-dark">All products <ArrowRight size={16} /></Link>
+    <section aria-label="Highlights" className="border-t border-white/10 bg-ink text-white">
+      <Marquee label="What we stand for" speed={55} repeat={3} className="py-3 [--marquee-gap:1.5rem] sm:py-4 sm:[--marquee-gap:2.5rem]" itemClassName="flex shrink-0 items-center gap-[var(--marquee-gap)]"
+        items={highlights.map((t) => (<><span className="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[.16em] text-white/70 sm:text-[13px] sm:tracking-[.18em]">{t}</span><span aria-hidden className="size-1 shrink-0 rounded-full bg-orange" /></>))} />
+    </section>
+  );
+}
+
+export function FeaturedProducts() {
+  const featured = getFeatured().slice(0, 6);
+  return (
+    <section className="py-12 sm:py-24">
+      <div className="container-x">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-1 sm:mb-10">
+          <SectionHeading eyebrow="Our selection" title="Favourites from our shelves" />
+          <Link href="/products" className="nudge t-hover inline-flex min-h-11 items-center gap-1 font-semibold hover:text-orange-dark">All products <ArrowRight size={16} /></Link>
+        </div>
       </div>
-      <ProductGrid variant="carousel" label="Featured products" products={getFeatured().slice(0, 4)} />
-    </div></section>
+      {/* Product belt: slow, 90s per pass, full-bleed; pauses on hover / while touched so a card can be opened. */}
+      <Marquee label="Featured products" speed={90} repeat={3} className="pb-8 pt-2 [--marquee-gap:.75rem] sm:[--marquee-gap:1.25rem]" itemClassName="w-[10.5rem] shrink-0 sm:w-64"
+        items={featured.map((p) => (dup: boolean) => <ProductCard product={p} dup={dup} sizes="(min-width:640px) 256px, 168px" />)} />
+    </section>
   );
 }
 
@@ -51,16 +69,29 @@ export function CategoriesSection() {
     <section className="bg-cream py-12 sm:py-24"><div className="container-x">
       <SectionHeading eyebrow="Browse" title="Shop by category" text="Everything we make and sell, organised the way you shop." />
       <ul className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-10 sm:gap-5 md:grid-cols-4">
-        {categories.map((c) => (
-          <li key={c.id}>
-            <Link href={`/products?category=${c.id}`} className="group relative block aspect-square overflow-hidden rounded-xl transition-transform active:scale-[.98] sm:aspect-[4/5] sm:rounded-[var(--radius-card)]">
-              <AppImage src={c.image} alt="" fill sizes="(min-width:768px) 25vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-3 text-white sm:p-4"><h3 className="h-display text-lg leading-tight sm:text-xl">{c.name}</h3><p className="mt-1 hidden text-xs text-white/75 sm:block">{c.description}</p></div>
+        {categories.map((c, i) => (
+          <li key={c.id}><Reveal delay={stagger(i)} className="h-full">
+            <Link href={`/products?category=${c.id}`} className="card-lift zoom relative block aspect-square rounded-xl sm:aspect-[4/5] sm:rounded-[var(--radius-card)]">
+              <div className="absolute inset-0 overflow-hidden rounded-[inherit]">
+                <AppImage src={c.image} alt="" fill sizes="(min-width:768px) 25vw, 50vw" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-3 text-white sm:p-4"><h3 className="h-display text-lg leading-tight sm:text-xl">{c.name}</h3><p className="mt-1 hidden text-xs text-white/75 sm:block">{c.description}</p></div>
+              </div>
+              <span aria-hidden className="card-arrow absolute right-3 top-3 hidden size-9 place-items-center rounded-full bg-white/15 text-white backdrop-blur hoverable:grid"><ArrowUpRight size={16} /></span>
             </Link>
-          </li>
+          </Reveal></li>
         ))}
       </ul>
+    </div>
+    {/* Belt b: category belt, opposite direction, 70s per pass, full-bleed on the cream background. */}
+    <div className="mt-10 sm:mt-16">
+      <Marquee label="Browse categories" speed={70} reverse repeat={2} className="py-2 [--marquee-gap:.75rem] sm:[--marquee-gap:1rem]" itemClassName="shrink-0"
+        items={categories.map((c) => (dup: boolean) => (
+          <Link href={`/products?category=${c.id}`} tabIndex={dup ? -1 : undefined} className="zoom t-hover inline-flex min-h-12 items-center gap-2.5 whitespace-nowrap rounded-full border border-ink/10 bg-warm p-1.5 pr-4 hover:border-orange hover:text-orange-ink active:bg-white sm:gap-3 sm:p-2 sm:pr-6">
+            <span className="relative size-9 shrink-0 overflow-hidden rounded-full sm:size-11"><AppImage src={c.image} alt="" fill sizes="44px" className="object-cover" /></span>
+            <span className="h-display text-base sm:text-xl">{c.name}</span>
+          </Link>
+        ))} />
     </div></section>
   );
 }
@@ -76,7 +107,7 @@ export function WhyChooseUs() {
       <SectionHeading eyebrow="Why choose us" title="Good food starts with good habits" />
       <ul className="mt-6 grid gap-x-8 gap-y-3 sm:mt-10 sm:grid-cols-2 sm:gap-y-6 lg:grid-cols-3">
         {reasons.map(([Icon, t, d], i) => (
-          <li key={t}><Reveal delay={i * 0.05} className="flex gap-3 border-t border-line pt-4 sm:gap-4 sm:pt-6">
+          <li key={t}><Reveal delay={stagger(i)} className="flex gap-3 border-t border-line pt-4 sm:gap-4 sm:pt-6">
             <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-ink text-orange"><Icon size={20} /></span>
             <div><h3 className="font-semibold">{t}</h3><p className="mt-1 text-sm text-muted">{d}</p></div>
           </Reveal></li>

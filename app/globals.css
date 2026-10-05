@@ -6,6 +6,23 @@
   --radius-card: 14px; --shadow-card: 0 1px 2px rgb(22 21 19 / .05), 0 8px 24px -12px rgb(22 21 19 / .15);
 }
 @custom-variant short (@media (max-height: 30rem));
+/* Hover only exists on real pointers: touch devices never get sticky hover after a tap. Overrides Tailwind's built-in `hover:`. */
+@custom-variant hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover { @slot; }
+  }
+}
+@custom-variant hoverable {
+  @media (hover: hover) and (pointer: fine) { @slot; }
+}
+/* Motion language — define once, reuse everywhere (lib/motion.ts mirrors these for `motion`). */
+:root {
+  --ease-lux: cubic-bezier(.22, 1, .36, 1);
+  --dur-hover: 450ms; --dur-reveal: 800ms; --dur-page: 700ms; --dur-marquee: 55s;
+  --dur-zoom: 900ms;   /* image zoom: deliberately slower than --dur-hover */
+  --dur-press: 150ms;  /* :active press feedback — the only thing allowed under 300ms */
+  --dur-menu: 350ms;   /* mobile menu open/close */
+}
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(5rem + env(safe-area-inset-top)); }
 html.menu-open { overflow: hidden; scrollbar-gutter: stable; }
 * { -webkit-tap-highlight-color: transparent; }
@@ -15,15 +32,91 @@ body { background: var(--color-warm); color: var(--color-ink); font-family: var(
 html.menu-open .action-bar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
-/* Reveal: CSS-driven so it works the same for SSR, short on phones, off for reduced motion */
-.reveal { opacity: 0; translate: 0 .75rem; transition: opacity .35s cubic-bezier(.22,1,.36,1), translate .35s cubic-bezier(.22,1,.36,1); }
+/* Reveal: CSS-driven so it works the same for SSR, slow + short on phones (16px), 28px on desktop, off for reduced motion */
+.reveal { opacity: 0; translate: 0 16px; transition: opacity var(--dur-reveal) var(--ease-lux), translate var(--dur-reveal) var(--ease-lux); }
 .reveal-in { opacity: 1; translate: 0 0; }
-@media (min-width: 64rem) { .reveal { translate: 0 24px; transition-duration: .5s; } .reveal-in { translate: 0 0; } }
+@media (min-width: 64rem) { .reveal { translate: 0 28px; } .reveal-in { translate: 0 0; } }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; translate: none; transition: none; } }
 @media (scripting: none) { .reveal { opacity: 1; translate: none; } }
 /* Above-the-fold: never hidden waiting for JS; animates (CSS only) on desktop only, as before */
-@keyframes rise { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
-@media (min-width: 64rem) and (prefers-reduced-motion: no-preference) { .reveal-eager { animation: rise .5s cubic-bezier(.22,1,.36,1) both; } }
+@keyframes rise { from { opacity: 0; translate: 0 28px; } to { opacity: 1; translate: 0 0; } }
+@media (min-width: 64rem) and (prefers-reduced-motion: no-preference) { .reveal-eager { animation: rise var(--dur-reveal) var(--ease-lux) both; } }
 @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+@layer components {
+  /* Generic smooth transition for interactive elements (color / border / background / transform only). */
+  .t-hover { transition-property: color, background-color, border-color, opacity, translate, scale, transform; transition-duration: var(--dur-hover); transition-timing-function: var(--ease-lux); }
+  .t-hover:active { transition-duration: var(--dur-press); }
+
+  /* Button: a fill slides in from the left (::before, scaleX) — colours are unchanged, only how they arrive. */
+  .btn { position: relative; isolation: isolate; overflow: hidden; transition: color var(--dur-hover) var(--ease-lux), background-color var(--dur-hover) var(--ease-lux), border-color var(--dur-hover) var(--ease-lux), scale var(--dur-press) var(--ease-lux), opacity var(--dur-hover) var(--ease-lux); }
+  .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--btn-fill); transform: scaleX(0); transform-origin: left; transition: transform var(--dur-hover) var(--ease-lux); }
+  .btn svg { transition: translate var(--dur-hover) var(--ease-lux); }
+  .btn:active { scale: .98; color: var(--btn-on-fill); }
+  .btn:active::before { transform: scaleX(1); transition-duration: var(--dur-press); }
+  .btn:disabled::before { display: none; }
+  .btn-primary { --btn-fill: var(--color-orange-dark); --btn-on-fill: #fff; --btn-hover-border: transparent; background-color: var(--color-orange); color: var(--color-ink); }
+  .btn-primary:active { --btn-fill: var(--color-orange-ink); }
+  .btn-dark { --btn-fill: var(--color-charcoal); --btn-on-fill: #fff; --btn-hover-border: transparent; background-color: var(--color-ink); color: #fff; }
+  .btn-outline { --btn-fill: var(--color-ink); --btn-on-fill: #fff; --btn-hover-border: var(--color-ink); border: 1px solid rgb(22 21 19 / .25); color: var(--color-ink); }
+  .btn-light { --btn-fill: #fff; --btn-on-fill: var(--color-ink); --btn-hover-border: #fff; border: 1px solid rgb(255 255 255 / .3); color: #fff; }
+  .btn:active { border-color: var(--btn-hover-border); }
+
+  /* Arrow nudge: 3px to the right on hover (buttons and any link marked .nudge). */
+  .nudge svg { transition: translate var(--dur-hover) var(--ease-lux); }
+
+  /* Nav link: orange underline grows from the left, leaves to the right, and stays on the active page. */
+  .nav-link { position: relative; }
+  .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--color-orange); transform: scaleX(0); transform-origin: right; transition: transform var(--dur-hover) var(--ease-lux); }
+  .nav-link[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Cards: 4px lift + soft shadow. The shadow fades in on a pseudo-element (opacity) so only transform/opacity animate. */
+  .card-lift { position: relative; transition: transform var(--dur-hover) var(--ease-lux), scale var(--dur-press) var(--ease-lux); }
+  .card-lift::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; box-shadow: 0 24px 44px -24px rgb(22 21 19 / .38), 0 6px 14px -8px rgb(22 21 19 / .14); opacity: 0; transition: opacity var(--dur-hover) var(--ease-lux); }
+  .card-lift:active { scale: .985; }
+  .zoom img { transition: transform var(--dur-zoom) var(--ease-lux); }
+  .card-view { transition: color var(--dur-hover) var(--ease-lux); }
+
+  /* Marquee belts (CSS only, see components/ui/Marquee.tsx). */
+  .marquee { --marquee-gap: 2rem; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+  @media (min-width: 40rem) { .marquee { --marquee-gap: 3rem; } }
+  .marquee-track { display: flex; width: max-content; will-change: transform; animation: marquee-scroll calc(var(--marquee-speed, var(--dur-marquee)) * var(--marquee-repeat, 1)) linear infinite; }
+  .marquee-reverse .marquee-track { animation-direction: reverse; }
+  .marquee-list { display: flex; flex: none; align-items: center; gap: var(--marquee-gap); padding-inline-end: var(--marquee-gap); }
+  .marquee-pause:active .marquee-track { animation-play-state: paused; }
+}
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Hover-only effects: real pointers only. Touch gets just the subtle :active states above. */
+@media (hover: hover) and (pointer: fine) {
+  .btn:not(:disabled):hover { color: var(--btn-on-fill); border-color: var(--btn-hover-border); }
+  .btn:not(:disabled):hover::before { transform: scaleX(1); }
+  .btn:not(:disabled):hover svg.lucide-arrow-right, .btn:not(:disabled):hover svg.lucide-arrow-up-right, .nudge:hover svg { translate: 3px 0; }
+  .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+  .card-lift:hover { transform: translateY(-4px); }
+  .card-lift:hover::after { opacity: 1; }
+  .zoom:hover img { transform: scale(1.04); }
+  .card-lift:hover .card-view { color: var(--color-orange-dark); }
+  .card-arrow { opacity: 0; transform: translateX(-4px); transition: opacity var(--dur-hover) var(--ease-lux), transform var(--dur-hover) var(--ease-lux); }
+  .card-lift:hover .card-arrow, .card-lift:focus-within .card-arrow { opacity: 1; transform: none; }
+  .marquee-pause:hover .marquee-track { animation-play-state: paused; }
+}
+
+/* Reduced motion: marquees stop (static, scrollable), hover becomes a plain colour change, nothing moves. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-mask-image: none; mask-image: none; }
+  .marquee::-webkit-scrollbar { display: none; }
+  .marquee-track { animation: none !important; will-change: auto; padding-inline-start: 1.25rem; }
+  .marquee-dup { display: none; }
+  .btn::before { display: none; }
+  .btn svg, .nudge svg { translate: none !important; }
+  .btn:active { scale: none; background-color: var(--btn-fill); }
+  .card-lift:hover, .card-lift:active { transform: none; scale: none; }
+  .zoom:hover img { transform: none !important; }
+  .card-arrow { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  .btn:not(:disabled):hover { background-color: var(--btn-fill); }
+}
 @utility container-x { margin-inline: auto; width: 100%; max-width: 76rem; padding-left: max(1.25rem, env(safe-area-inset-left)); padding-right: max(1.25rem, env(safe-area-inset-right)); @media (min-width: 40rem){ padding-left: max(2rem, env(safe-area-inset-left)); padding-right: max(2rem, env(safe-area-inset-right)); } }
 @utility h-display { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 1.05; font-weight: 600; }

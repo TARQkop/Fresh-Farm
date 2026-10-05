@@ -4,6 +4,7 @@ import { AppImage } from "@/components/ui/AppImage";
 import { images } from "@/data/images";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { stagger } from "@/lib/motion";
 import { ContactCTA } from "@/components/sections/home-sections";
 export const metadata: Metadata = { title: "About", description: "Our story, our focus on freshness and quality, and the values behind our local dairy and farm-food business.", alternates: { canonical: "/about" } };
 // Placeholder copy — replace with the owner's real story. No dates, certifications or awards are claimed.
@@ -20,7 +21,7 @@ export default function AboutPage() {
       <section className="bg-ink py-10 text-white sm:py-20"><div className="container-x"><SectionHeading light eyebrow="About us" title="Honest food, made close to home." /></div></section>
       <section className="py-10 sm:py-24"><div className="container-x grid gap-7 sm:gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative aspect-[4/3] max-h-[42dvh] overflow-hidden rounded-2xl sm:aspect-[4/5] sm:max-h-none lg:sticky lg:top-28 lg:self-start"><AppImage src={images.about} alt="Our shop and team" fill priority sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" /></div>
-        <div className="space-y-8 sm:space-y-10">{blocks.map(([t, d], i) => <Reveal key={t} delay={i * 0.04}><h2 className="h-display text-[1.625rem] sm:text-3xl">{t}</h2><p className="mt-2 text-base sm:mt-3 sm:text-lg leading-relaxed text-muted">{d}</p></Reveal>)}</div>
+        <div className="space-y-8 sm:space-y-10">{blocks.map(([t, d], i) => <Reveal key={t} delay={stagger(i)}><h2 className="h-display text-[1.625rem] sm:text-3xl">{t}</h2><p className="mt-2 text-base sm:mt-3 sm:text-lg leading-relaxed text-muted">{d}</p></Reveal>)}</div>
       </div></section>
       <section className="bg-cream py-12 sm:py-20"><div className="container-x">
         <SectionHeading eyebrow="Values" title="What we stand for" />
