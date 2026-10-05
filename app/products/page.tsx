@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <>
-      <section className="bg-ink py-12 text-white sm:py-16">
+      <section className="bg-ink py-8 text-white sm:py-16">
         <div className="container-x">
           <SectionHeading
             light
@@ -25,7 +25,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <div className="container-x py-8 sm:py-12">
+      <div className="container-x pb-8 pt-3 sm:py-12">
         <ProductCatalog
           products={getProducts()}
           categories={categories}

@@ -17,14 +17,14 @@ const values = [[BadgeCheck, "Quality"], [Leaf, "Freshness"], [HeartHandshake, "
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-ink py-14 text-white sm:py-20"><div className="container-x"><SectionHeading light eyebrow="About us" title="Honest food, made close to home." /></div></section>
-      <section className="py-16 sm:py-24"><div className="container-x grid gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl lg:sticky lg:top-28 lg:self-start"><AppImage src={images.about} alt="Our shop and team" fill priority sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" /></div>
-        <div className="space-y-10">{blocks.map(([t, d], i) => <Reveal key={t} delay={i * 0.04}><h2 className="h-display text-3xl">{t}</h2><p className="mt-3 text-lg leading-relaxed text-muted">{d}</p></Reveal>)}</div>
+      <section className="bg-ink py-10 text-white sm:py-20"><div className="container-x"><SectionHeading light eyebrow="About us" title="Honest food, made close to home." /></div></section>
+      <section className="py-10 sm:py-24"><div className="container-x grid gap-7 sm:gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="relative aspect-[4/3] max-h-[42dvh] overflow-hidden rounded-2xl sm:aspect-[4/5] sm:max-h-none lg:sticky lg:top-28 lg:self-start"><AppImage src={images.about} alt="Our shop and team" fill priority sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" /></div>
+        <div className="space-y-8 sm:space-y-10">{blocks.map(([t, d], i) => <Reveal key={t} delay={i * 0.04}><h2 className="h-display text-[1.625rem] sm:text-3xl">{t}</h2><p className="mt-2 text-base sm:mt-3 sm:text-lg leading-relaxed text-muted">{d}</p></Reveal>)}</div>
       </div></section>
-      <section className="bg-cream py-16 sm:py-20"><div className="container-x">
+      <section className="bg-cream py-12 sm:py-20"><div className="container-x">
         <SectionHeading eyebrow="Values" title="What we stand for" />
-        <ul className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-5">{values.map(([Icon, t]) => <li key={t} className="rounded-[var(--radius-card)] border border-line bg-white p-5"><Icon className="text-orange" size={24} /><p className="mt-4 font-semibold">{t}</p></li>)}</ul>
+        <ul className="mt-6 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 md:grid-cols-5">{values.map(([Icon, t]) => <li key={t} className="rounded-[var(--radius-card)] border border-line bg-white p-4 sm:p-5"><Icon className="text-orange" size={24} /><p className="mt-4 font-semibold">{t}</p></li>)}</ul>
       </div></section>
       <ContactCTA />
     </>

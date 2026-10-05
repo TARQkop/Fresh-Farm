@@ -1,13 +1,29 @@
 @import "tailwindcss";
 @theme {
   --color-ink: #161513; --color-charcoal: #24221f; --color-cream: #f6f0e4; --color-warm: #fcfaf5;
-  --color-orange: #e8731a; --color-orange-dark: #c25f0e; --color-line: #e5ddcc; --color-muted: #6b665c;
+  --color-orange: #e8731a; --color-orange-dark: #c25f0e; --color-orange-ink: #a8520b; --color-line: #e5ddcc; --color-muted: #6b665c;
   --font-display: var(--font-fraunces), Georgia, serif; --font-sans: var(--font-inter), system-ui, sans-serif;
   --radius-card: 14px; --shadow-card: 0 1px 2px rgb(22 21 19 / .05), 0 8px 24px -12px rgb(22 21 19 / .15);
 }
-html { scroll-behavior: smooth; }
-body { background: var(--color-warm); color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-:focus-visible { outline: 2px solid var(--color-orange); outline-offset: 3px; }
+@custom-variant short (@media (max-height: 30rem));
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(5rem + env(safe-area-inset-top)); }
+html.menu-open { overflow: hidden; scrollbar-gutter: stable; }
+* { -webkit-tap-highlight-color: transparent; }
+a, button, summary, label, input, select, textarea { touch-action: manipulation; }
+body { background: var(--color-warm); color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+:focus-visible { outline: 2px solid var(--color-orange); outline-offset: 2px; box-shadow: 0 0 0 2px var(--color-ink); }
+html.menu-open .action-bar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+/* Reveal: CSS-driven so it works the same for SSR, short on phones, off for reduced motion */
+.reveal { opacity: 0; translate: 0 .75rem; transition: opacity .35s cubic-bezier(.22,1,.36,1), translate .35s cubic-bezier(.22,1,.36,1); }
+.reveal-in { opacity: 1; translate: 0 0; }
+@media (min-width: 64rem) { .reveal { translate: 0 24px; transition-duration: .5s; } .reveal-in { translate: 0 0; } }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; translate: none; transition: none; } }
+@media (scripting: none) { .reveal { opacity: 1; translate: none; } }
+/* Above-the-fold: never hidden waiting for JS; animates (CSS only) on desktop only, as before */
+@keyframes rise { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
+@media (min-width: 64rem) and (prefers-reduced-motion: no-preference) { .reveal-eager { animation: rise .5s cubic-bezier(.22,1,.36,1) both; } }
 @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
-@utility container-x { margin-inline: auto; width: 100%; max-width: 76rem; padding-inline: 1.25rem; @media (min-width: 40rem){ padding-inline: 2rem; } }
+@utility container-x { margin-inline: auto; width: 100%; max-width: 76rem; padding-left: max(1.25rem, env(safe-area-inset-left)); padding-right: max(1.25rem, env(safe-area-inset-right)); @media (min-width: 40rem){ padding-left: max(2rem, env(safe-area-inset-left)); padding-right: max(2rem, env(safe-area-inset-right)); } }
 @utility h-display { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 1.05; font-weight: 600; }
