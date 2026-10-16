@@ -1,8 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-
-// Item = any node, or a function that receives `duplicate` (true for the aria-hidden copies) so links
-// inside the copies can be taken out of the tab order.
+import { MarqueeDrag } from "./MarqueeDrag";
 export type MarqueeItem = ReactNode | ((duplicate: boolean) => ReactNode);
 
 type Props = {
@@ -18,13 +16,10 @@ type Props = {
   itemClassName?: string;
 };
 
-// Pure CSS belt (server component, no JS). The track holds two identical halves and moves translateX(0 → -50%),
-// so the loop is seamless. Everything after the first copy is aria-hidden. See .marquee in globals.css
-// for the edge mask, hover/touch pause and the static, scrollable reduced-motion fallback.
 export function Marquee({ items, speed, reverse, pauseOnHover = true, repeat = 1, label, className, itemClassName }: Props) {
   const style = { "--marquee-repeat": repeat, ...(speed ? { "--marquee-speed": `${speed}s` } : null) } as CSSProperties;
   return (
-    <div role={label ? "group" : undefined} aria-label={label} className={cn("marquee", reverse && "marquee-reverse", pauseOnHover && "marquee-pause", className)} style={style}>
+    <div role={label ? "group" : undefined} aria-label={label} className={cn("marquee [&::-webkit-scrollbar]:hidden", reverse && "marquee-reverse", pauseOnHover && "marquee-pause", className)} style={style}>
       <div className="marquee-track">
         {Array.from({ length: repeat * 2 }, (_, copy) => {
           const duplicate = copy > 0;
@@ -35,6 +30,7 @@ export function Marquee({ items, speed, reverse, pauseOnHover = true, repeat = 1
           );
         })}
       </div>
+      <MarqueeDrag repeat={repeat} reverse={!!reverse} pauseOnHover={pauseOnHover} speed={speed} />
     </div>
   );
 }

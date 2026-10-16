@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { ChevronRight, MessageCircle, Phone, Droplets, Package } from "lucide-react";
 import { getProducts, getProduct, getRelated } from "@/lib/products";
 import { getCategory } from "@/data/categories";
-import { formatPrice } from "@/lib/utils";
 import { site, whatsappLink } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { AppImage } from "@/components/ui/AppImage";
@@ -22,7 +21,7 @@ export default async function ProductPage({ params }: Params) {
   if (!p) notFound();
   const cat = getCategory(p.category);
   const related = getRelated(p);
-  const ld = { "@context": "https://schema.org", "@type": "Product", name: p.name, description: p.description, image: new URL(p.image, site.url).href, category: cat?.name, offers: { "@type": "Offer", price: p.price, priceCurrency: "USD", availability: "https://schema.org/InStock", url: `${site.url}/products/${p.slug}` } };
+  const ld = { "@context": "https://schema.org", "@type": "Product", name: p.name, description: p.description, image: new URL(p.image, site.url).href, category: cat?.name };
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
@@ -38,7 +37,6 @@ export default async function ProductPage({ params }: Params) {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[.18em] text-orange-ink">{cat?.name}</p>
             <h1 className="h-display mt-2 text-[2rem] sm:text-5xl">{p.name}</h1>
-            <p className="mt-2 text-3xl font-bold text-orange-dark sm:mt-4">{formatPrice(p.price)} <span className="text-sm font-normal text-muted">{p.unit}</span></p>
             <p className="mt-3 text-base leading-relaxed text-muted sm:mt-5 sm:text-lg">{p.details ?? p.description}</p>
             {p.sizes && <div className="mt-5 sm:mt-7"><h2 className="mb-2 text-sm font-semibold">Available sizes</h2><ul className="flex flex-wrap gap-2">{p.sizes.map((s) => <li key={s} className="inline-flex min-h-11 items-center rounded-lg border border-line bg-white px-4 text-sm">{s}</li>)}</ul></div>}
             {/* Future: quantity selector, add-to-cart and availability go here. */}
