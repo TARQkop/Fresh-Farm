@@ -9,6 +9,7 @@ export const site = {
   social: { instagram: "https://instagram.com/", facebook: "https://facebook.com/", snapchat: "https://snapchat.com/add/" },
   mapEmbed: "",
 };
+export const assetPath = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
 export const whatsappLink = (text = "Hello, I'd like to order.") => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
 // `key` is the translation key suffix (nav.<key> in lib/i18n/dict.ts).
 export const nav = [{ href: "/", key: "home" }, { href: "/about", key: "about" }, { href: "/contact", key: "contact" }];

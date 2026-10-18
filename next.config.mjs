@@ -1,10 +1,14 @@
 /** @type {import("next").NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
+const basePath = isProd ? "/Fresh-Farm" : "";
 
 const nextConfig = {
   output: "export",
 
-  basePath: isProd ? "/Fresh-Farm" : "",
+  basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 
   allowedDevOrigins: ["192.168.56.1"],
 

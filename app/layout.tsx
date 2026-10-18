@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { LanguageProvider } from "@/lib/i18n/provider";
 import { images } from "@/data/images";
-import { site } from "@/lib/site";
+import { assetPath, site } from "@/lib/site";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -39,14 +39,14 @@ export const metadata: Metadata = {
   },
   description: site.description,
   icons: {
-    icon: "/images/img.png",
+    icon: assetPath("/images/img.png"),
   },
   openGraph: {
     type: "website",
     siteName: site.name,
     title: site.name,
     description: site.description,
-    images: [images.hero],
+    images: [assetPath(images.hero)],
   },
   alternates: {
     canonical: "/",
