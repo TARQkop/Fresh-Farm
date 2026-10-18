@@ -31,7 +31,7 @@ const arabic = Noto_Sans_Arabic({
 const langBoot = `try{var l=localStorage.getItem("ff-lang");if(l==="ar"||l==="ku"){var d=document.documentElement;d.lang=l;d.dir="rtl"}}catch(e){}`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(new URL(site.url).origin),
   title: {
     default: `${site.name} — Fresh dairy & farm products`,
     template: `%s | ${site.name}`,
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     images: [assetPath("/images/img.png")],
   },
   alternates: {
-    canonical: "/",
+    canonical: `${site.url}/`,
   },
 };
 
