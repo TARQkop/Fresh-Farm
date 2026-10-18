@@ -6,7 +6,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { LanguageProvider } from "@/lib/i18n/provider";
-import { images } from "@/data/images";
 import { assetPath, site } from "@/lib/site";
 
 const display = Fraunces({
@@ -46,7 +45,19 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.name,
     description: site.description,
-    images: [assetPath(images.hero)],
+    url: site.url,
+    images: [{
+      url: assetPath("/images/img.png"),
+      width: 1024,
+      height: 1024,
+      alt: "Bahik bakery logo",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.description,
+    images: [assetPath("/images/img.png")],
   },
   alternates: {
     canonical: "/",
