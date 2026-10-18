@@ -4,7 +4,6 @@ import { Fraunces, Inter, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { MobileActionBar } from "@/components/layout/MobileActionBar";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { LanguageProvider } from "@/lib/i18n/provider";
 import { images } from "@/data/images";
@@ -83,7 +82,6 @@ export default function RootLayout({
           <Navbar />
           <main id="main">{children}</main>
           <Footer />
-          <MobileActionBar />
         </LanguageProvider>
       </body>
     </html>

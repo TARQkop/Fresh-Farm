@@ -13,7 +13,7 @@ export function Footer() {
     <footer className="bg-ink text-white">
       <div className="container-x grid grid-cols-2 gap-x-6 gap-y-8 py-10 sm:gap-10 sm:py-14 lg:grid-cols-4 lg:py-20">
         <div className="col-span-2 sm:col-span-1">
-          <p className="h-display text-3xl">{t("brand.name")}<span className="text-orange">.</span></p>
+          <p dir="ltr" className="h-display inline-flex text-3xl"><span dir="auto">{t("brand.name")}</span><span className="text-orange">.</span></p>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{t("footer.desc")}</p>
           <SocialLinks tone="dark" className="mt-4 lg:mt-5" />
         </div>

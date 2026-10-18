@@ -29,7 +29,6 @@ html.menu-open { overflow: hidden; scrollbar-gutter: stable; }
 a, button, summary, label, input, select, textarea { touch-action: manipulation; }
 body { background: var(--color-warm); color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 :focus-visible { outline: 2px solid var(--color-orange); outline-offset: 2px; box-shadow: 0 0 0 2px var(--color-ink); }
-html.menu-open .action-bar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 /* Reveal: CSS-driven so it works the same for SSR, slow + short on phones (16px), 28px on desktop, off for reduced motion */

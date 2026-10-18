@@ -52,7 +52,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-ink pt-[env(safe-area-inset-top)] text-white">
       <div className="container-x relative z-10 flex h-16 items-center justify-between bg-ink lg:h-20">
-        <Link href="/" className="h-display inline-flex min-h-11 items-center text-2xl">{t("brand.name")}<span className="text-orange">.</span></Link>
+        <Link href="/" dir="ltr" className="h-display inline-flex min-h-11 items-center text-2xl"><span dir="auto">{t("brand.name")}</span><span className="text-orange">.</span></Link>
         <nav aria-label="Main" className="hidden items-center gap-9 lg:flex">
           {nav.map((n) => (
             <Link key={n.href} href={n.href} aria-current={active(n.href) ? "page" : undefined} className={cn("nav-link t-hover py-2 text-[15px] hover:text-orange", active(n.href) ? "text-orange" : "text-white/80")}>{t(`nav.${n.key}`)}</Link>
