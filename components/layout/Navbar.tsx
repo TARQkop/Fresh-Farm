@@ -8,9 +8,12 @@ import { nav, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { DUR_MENU, EASE_LUX, MENU_STAGGER } from "@/lib/motion";
+import { useI18n } from "@/lib/i18n/provider";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const path = usePathname();
+  const { t } = useI18n();
   const menuBtn = useRef<HTMLButtonElement>(null);
   const firstLink = useRef<HTMLAnchorElement>(null);
   const wasOpen = useRef(false);
@@ -49,16 +52,17 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-ink pt-[env(safe-area-inset-top)] text-white">
       <div className="container-x relative z-10 flex h-16 items-center justify-between bg-ink lg:h-20">
-        <Link href="/" className="h-display inline-flex min-h-11 items-center text-2xl">{site.name}<span className="text-orange">.</span></Link>
+        <Link href="/" className="h-display inline-flex min-h-11 items-center text-2xl">{t("brand.name")}<span className="text-orange">.</span></Link>
         <nav aria-label="Main" className="hidden items-center gap-9 lg:flex">
           {nav.map((n) => (
-            <Link key={n.href} href={n.href} aria-current={active(n.href) ? "page" : undefined} className={cn("nav-link t-hover py-2 text-[15px] hover:text-orange", active(n.href) ? "text-orange" : "text-white/80")}>{n.label}</Link>
+            <Link key={n.href} href={n.href} aria-current={active(n.href) ? "page" : undefined} className={cn("nav-link t-hover py-2 text-[15px] hover:text-orange", active(n.href) ? "text-orange" : "text-white/80")}>{t(`nav.${n.key}`)}</Link>
           ))}
-          <Button href="/contact" className="min-h-10 px-5">Contact Us</Button>
+          <LanguageSwitcher />
+          <Button href="/contact" className="min-h-10 px-5">{t("ui.contactUs")}</Button>
         </nav>
         <div className="flex items-center gap-2 lg:hidden">
-          <a href={`tel:${site.phone}`} aria-label="Call us" className="t-hover grid size-11 place-items-center rounded-lg text-orange active:bg-white/10"><Phone size={20} /></a>
-          <button ref={menuBtn} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)} className={cn("t-hover grid size-11 place-items-center rounded-lg border active:bg-white/15", open ? "border-orange text-orange" : "border-white/15")}>
+          <a href={`tel:${site.phone}`} aria-label={t("ui.callUs")} className="t-hover grid size-11 place-items-center rounded-lg text-orange active:bg-white/10"><Phone size={20} /></a>
+          <button ref={menuBtn} aria-label={open ? t("ui.closeMenu") : t("ui.openMenu")} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)} className={cn("t-hover grid size-11 place-items-center rounded-lg border active:bg-white/15", open ? "border-orange text-orange" : "border-white/15")}>
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -70,13 +74,14 @@ export function Navbar() {
               {nav.map((n, i) => (
                 <motion.div key={n.href} {...item(i)}>
                   <Link ref={i === 0 ? firstLink : undefined} href={n.href} aria-current={active(n.href) ? "page" : undefined} onClick={() => setOpen(false)} className={cn("t-hover h-display flex min-h-16 items-center justify-between border-b border-white/10 py-3 text-3xl active:bg-white/5", active(n.href) ? "text-orange" : "text-white")}>
-                    {n.label}<ChevronRight size={22} aria-hidden className="text-white/40" />
+                    {t(`nav.${n.key}`)}<ChevronRight size={22} aria-hidden className="text-white/40 rtl:rotate-180" />
                   </Link>
                 </motion.div>
               ))}
               <motion.div {...item(nav.length)} className="mt-6 flex flex-col gap-3">
-                <Button href="/contact" className="w-full">Contact Us</Button>
-                <Button href={`tel:${site.phone}`} variant="light" className="w-full">Call {site.phone}</Button>
+                <LanguageSwitcher variant="inline" />
+                <Button href="/contact" className="w-full">{t("ui.contactUs")}</Button>
+                <Button href={`tel:${site.phone}`} variant="light" className="w-full">{t("ui.call")} <span dir="ltr">{site.phone}</span></Button>
               </motion.div>
             </nav>
           </motion.div>

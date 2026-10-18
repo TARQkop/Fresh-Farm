@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🥛 Fresh Farm
+# 🥛 Bahik
 
 **A premium product-catalog website for a local dairy & farm-food business.**
 Fresh milk, cheese, yogurt, butter, eggs and farm products — customers browse, then order by phone or WhatsApp.
@@ -13,7 +13,7 @@ Fresh milk, cheese, yogurt, butter, eggs and farm products — customers browse,
 
 [**Live demo**](https://YOUR_USERNAME.github.io/Fresh-Farm/) · [Report a bug](../../issues) · [Request a feature](../../issues)
 
-<!-- Add a screenshot or GIF here:  ![Fresh Farm preview](docs/preview.png) -->
+<!-- Add a screenshot or GIF here:  ![Bahik preview](docs/preview.png) -->
 
 </div>
 
@@ -54,7 +54,7 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:3000/Fresh-Farm** (the site is served under a base path, see [Deploy](#-deploy-to-github-pages)).
+Open **http://localhost:3000** during local development.
 
 | Script | What it does |
 | --- | --- |
@@ -65,15 +65,15 @@ Open **http://localhost:3000/Fresh-Farm** (the site is served under a base path,
 ## 📁 Project structure
 
 ```text
-fresh-farm/
-├── app/                  # Routes: home, products, products/[slug], about, contact
+bahik/
+├── app/                  # Routes: home, about, contact
 │   ├── globals.css       # Design tokens, motion language, component styles
 │   ├── template.tsx      # Enter-only page transition
 │   ├── sitemap.ts / robots.ts
 ├── components/
 │   ├── layout/           # Navbar, Footer, MobileActionBar
 │   ├── sections/         # Home page sections (hero, belts, categories, …)
-│   ├── products/         # ProductCard, ProductGrid, ProductCatalog
+│   ├── products/         # ProductCard (used by the home page products belt)
 │   ├── contact/          # ContactForm
 │   └── ui/               # Button, Marquee, Reveal, AppImage, SectionHeading
 ├── data/                 # categories, products, images
@@ -86,6 +86,8 @@ fresh-farm/
 | I want to change… | Edit |
 | --- | --- |
 | Business name, phone, WhatsApp, email, site URL | `lib/site.ts` (site URL can also come from `NEXT_PUBLIC_SITE_URL`) |
+| Instagram / Facebook / Snapchat links | `social` in `lib/site.ts` |
+| Text in English / Arabic / Badini Kurdish (every visible string, plus product and category names) | `lib/i18n/dict.ts` |
 | Products and prices | `data/products.ts` |
 | Categories | `data/categories.ts` |
 | Images | `data/images.ts` and `public/images/` |
@@ -105,7 +107,7 @@ All animation timing lives in one place in `app/globals.css`:
 
 ## 🌐 Deploy to GitHub Pages
 
-The project uses `output: "export"` and `basePath: "/Fresh-Farm"` in `next.config.mjs`.
+The project uses `output: "export"` and `basePath: "/Fresh-Farm"` in `next.config.mjs`. The base path follows the GitHub repository name; the website brand is **Bahik**.
 
 1. **Rename `basePath`** to match your repository name (or remove it if you use a custom domain or a `username.github.io` repo).
 2. Push the code to GitHub, then go to **Settings → Pages → Source: GitHub Actions**.

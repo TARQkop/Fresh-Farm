@@ -1,4 +1,4 @@
-name: Deploy Fresh Farm to GitHub Pages
+name: Deploy Bahik to GitHub Pages
 
 on:
   push:

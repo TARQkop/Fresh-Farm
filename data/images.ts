@@ -3,19 +3,19 @@
 // HTTPS URL, and add its domain to remotePatterns in next.config.mjs.
 const u = (id: string, w = 1600) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}`;
 
-export const images = {
-  hero: u("1609246280917-339404083c49"),
-  story: u("1600609293375-ffef58157013"),
-  about: u("1647813846512-2ebc1eb15628"),
-  milkBottle: u("1609246280917-339404083c49"),
-  milkGlass: u("1596151163116-98a5033814c2"),
-  cheeseWhite: u("1661349008073-136bed6e6788"),
-  cheeseBoard: u("1635910862522-7ee4806acf35"),
-  yogurt: u("1633893215271-f7e1fca081ad"),
-  butter: u("1589985269102-ff38adf6f00d"),
-  ghee: u("1590147315472-e701a4775379"),
-  eggs: u("1647813846512-2ebc1eb15628"),
-  chickenWhole: u("1672787153652-b3b9d92f3e8c"),
-  chickenCuts: u("1587593810167-a84920ea0781"),
-  honey: u("1558642452-9d2a7deb7f62"),
+  export const images = {
+  hero: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM (3).jpeg",
+  story: "/images/WhatsApp Image 2026-10-15 at 4.37.21 PM (1).jpeg",
+  about: "/images/WhatsApp Image 2026-10-15 at 4.37.21 PM (2).jpeg",
+  milkBottle: "/images/WhatsApp Image 2026-10-15 at 4.37.21 PM.jpeg",
+  milkGlass: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM (1).jpeg",
+  cheeseWhite: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM (2).jpeg",
+  cheeseBoard: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM (4).jpeg",
+  yogurt: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM.jpeg",
+  butter: "/images/WhatsApp Image 2026-10-15 at 4.37.23 PM (1).jpeg",
+  ghee: "/images/WhatsApp Image 2026-10-15 at 4.37.23 PM (2).jpeg",
+  eggs: "/images/WhatsApp Image 2026-10-15 at 4.37.23 PM (3).jpeg",
+  chickenWhole: "/images/WhatsApp Image 2026-10-15 at 4.37.23 PM (4).jpeg",
+  chickenCuts: "/images/WhatsApp Image 2026-10-15 at 4.37.23 PM.jpeg",
+  honey: "/images/WhatsApp Image 2026-10-15 at 4.37.24 PM (2).jpeg",
 } as const;
