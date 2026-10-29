@@ -20,7 +20,7 @@ const sans = Inter({
   display: "swap",
 });
 
-// Arabic-script font for Arabic and Kurdish.
+// Arabic-script font for Arabic.
 const arabic = Noto_Sans_Arabic({
   subsets: ["arabic"],
   variable: "--font-arabic",
@@ -28,7 +28,7 @@ const arabic = Noto_Sans_Arabic({
 });
 
 // Applies the saved language before first paint.
-const langBoot = `try{var l=localStorage.getItem("ff-lang");if(l==="ar"||l==="ku"){var d=document.documentElement;d.lang=l;d.dir="rtl"}}catch(e){}`;
+const langBoot = `try{var l=localStorage.getItem("ff-lang");if(l==="ar"){var d=document.documentElement;d.lang=l;d.dir="rtl"}}catch(e){}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(new URL(site.url).origin),

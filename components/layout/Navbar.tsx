@@ -13,7 +13,7 @@ import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const path = usePathname();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const menuBtn = useRef<HTMLButtonElement>(null);
   const firstLink = useRef<HTMLAnchorElement>(null);
   const wasOpen = useRef(false);
@@ -52,7 +52,9 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-ink pt-[env(safe-area-inset-top)] text-white">
       <div className="container-x relative z-10 flex h-16 items-center justify-between bg-ink lg:h-20">
-        <Link href="/" dir="ltr" className="h-display inline-flex min-h-11 items-center text-2xl"><span dir="auto">{t("brand.name")}</span><span className="text-orange">.</span></Link>
+        <Link href="/" dir="ltr" className="h-display inline-flex min-h-11 items-center text-2xl">
+          {lang === "ar" ? <><span className="text-orange">.</span><span dir="rtl">{t("brand.name")}</span></> : <><span dir="ltr">{t("brand.name")}</span><span className="text-orange">.</span></>}
+        </Link>
         <nav aria-label="Main" className="hidden items-center gap-9 lg:flex">
           {nav.map((n) => (
             <Link key={n.href} href={n.href} aria-current={active(n.href) ? "page" : undefined} className={cn("nav-link t-hover py-2 text-[15px] hover:text-orange", active(n.href) ? "text-orange" : "text-white/80")}>{t(`nav.${n.key}`)}</Link>

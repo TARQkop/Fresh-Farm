@@ -87,7 +87,7 @@ bahik/
 | --- | --- |
 | Business name, phone, WhatsApp, email, site URL | `lib/site.ts` (site URL can also come from `NEXT_PUBLIC_SITE_URL`) |
 | Instagram / Facebook / Snapchat links | `social` in `lib/site.ts` |
-| Text in English / Arabic / Badini Kurdish (every visible string, plus product and category names) | `lib/i18n/dict.ts` |
+| Text in English / Arabic (every visible string, plus product and category names) | `lib/i18n/dict.ts` |
 | Products and prices | `data/products.ts` |
 | Categories | `data/categories.ts` |
 | Images | `data/images.ts` and `public/images/` |

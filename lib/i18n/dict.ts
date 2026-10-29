@@ -1,6 +1,5 @@
 // All visible text lives here. English is the source of truth.
-// Kurdish (ku) is Badini (Kurmanji), written in the Arabic script.
-export type Lang = "en" | "ar" | "ku";
+export type Lang = "en" | "ar";
 
 export const LANGS: {
   code: Lang;
@@ -10,7 +9,6 @@ export const LANGS: {
 }[] = [
   { code: "en", label: "EN", name: "English", dir: "ltr" },
   { code: "ar", label: "عربي", name: "العربية", dir: "rtl" },
-  { code: "ku", label: "کوردی", name: "کوردی بادینی", dir: "rtl" },
 ];
 
 export const DEFAULT_LANG: Lang = "en";
@@ -53,15 +51,15 @@ const en: Dict = {
   "strip.4": "Carefully prepared",
   "strip.5": "Friendly service",
 
-  "feat.eyebrow": "Fresh from the oven",
-  "feat.title": "Our favourite breads",
+  "feat.eyebrow": "Fresh from our bakery",
+  "feat.title": "Our bakery's product selection",
   "feat.label": "Featured breads",
 
   "cats.eyebrow": "Discover",
-  "cats.title": "Explore our bread selection",
+  "cats.title": "Explore our bakery products",
   "cats.text":
-    "From everyday essentials to traditional favourites, find the bread you love.",
-  "cats.label": "Browse bread categories",
+    "From fresh bakery favourites to everyday essentials, find something for your table.",
+  "cats.label": "Browse product categories",
 
   "why.eyebrow": "Why choose us",
   "why.title": "Good bread starts with care",
@@ -177,54 +175,54 @@ const en: Dict = {
   "social.snapchat": "Snapchat",
 
   // Categories
-  "cat.milk.name": "White Bread",
-  "cat.milk.desc": "Soft, fresh white bread for every day.",
+  "cat.milk.name": "Cheese Bread",
+  "cat.milk.desc": "Freshly baked bread topped with cheese.",
 
-  "cat.cheese.name": "Whole Wheat Bread",
-  "cat.cheese.desc": "Wholesome bread made with whole wheat flour.",
+  "cat.cheese.name": "Pizza Bread",
+  "cat.cheese.desc": "Oven-baked bread topped with savoury pizza toppings.",
 
-  "cat.yogurt.name": "Traditional Flatbread",
-  "cat.yogurt.desc": "Traditional flatbread for everyday meals.",
+  "cat.yogurt.name": "Sesame Bread Rolls",
+  "cat.yogurt.desc": "Soft bread rolls topped with sesame seeds.",
 
-  "cat.butter.name": "Sesame Bread",
-  "cat.butter.desc": "Delicious bread topped with sesame seeds.",
+  "cat.butter.name": "Fresh Dairy",
+  "cat.butter.desc": "Fresh dairy products, prepared for your table.",
 
-  "cat.eggs.name": "Baguettes",
-  "cat.eggs.desc": "Golden, crusty bread with a soft centre.",
+  "cat.eggs.name": "Grocery Products",
+  "cat.eggs.desc": "A selection of everyday grocery products.",
 
   "cat.chicken.name": "Buns & Rolls",
   "cat.chicken.desc": "Soft buns and rolls for breakfast and sandwiches.",
 
-  "cat.farm.name": "Traditional & Specialty Bread",
-  "cat.farm.desc": "Discover more traditional and specialty bread varieties.",
+  "cat.farm.name": "Pickles & Sauces",
+  "cat.farm.desc": "A selection of pickles, sauces and pantry favourites.",
 
   // Products
-  "prod.p1.name": "Fresh White Bread",
-  "prod.p1.desc": "Soft and freshly baked white bread for everyday meals.",
+  "prod.p1.name": "Cheese Bread",
+  "prod.p1.desc": "Freshly baked bread filled and topped with melted cheese.",
 
   "prod.p2.name": "Whole Wheat Bread",
   "prod.p2.desc": "A wholesome loaf made with whole wheat flour.",
 
-  "prod.p3.name": "Traditional Flatbread",
-  "prod.p3.desc": "Traditional flatbread that pairs well with everyday meals.",
+  "prod.p3.name": "Pizza Bread",
+  "prod.p3.desc": "Oven-baked bread topped with cheese, olives and savoury toppings.",
 
   "prod.p4.name": "Sesame Bread",
   "prod.p4.desc": "Fresh bread topped with fragrant sesame seeds.",
 
-  "prod.p5.name": "French Baguette",
-  "prod.p5.desc": "A golden crust with a soft, delicious centre.",
+  "prod.p5.name": "Sesame Bread Rolls",
+  "prod.p5.desc": "Soft, golden bread rolls topped with sesame seeds.",
 
   "prod.p6.name": "Soft Bread Rolls",
   "prod.p6.desc": "Soft and fluffy rolls, perfect for breakfast.",
 
-  "prod.p7.name": "Burger Buns",
-  "prod.p7.desc": "Soft buns ideal for burgers and homemade sandwiches.",
+  "prod.p7.name": "Fresh Laban",
+  "prod.p7.desc": "Fresh, creamy laban served in a traditional bowl.",
 
   "prod.p8.name": "Pita Bread",
   "prod.p8.desc": "Versatile pita bread for sandwiches and sharing.",
 
-  "prod.p9.name": "Traditional Village Bread",
-  "prod.p9.desc": "Rustic bread inspired by traditional local baking.",
+  "prod.p9.name": "Assorted Grocery Products",
+  "prod.p9.desc": "A variety of packaged foods and everyday pantry staples.",
 
   "prod.p10.name": "Toast Bread",
   "prod.p10.desc": "Soft sliced bread for toast and quick breakfasts.",
@@ -232,8 +230,8 @@ const en: Dict = {
   "prod.p11.name": "Naan Bread",
   "prod.p11.desc": "Soft, delicious flatbread to enjoy with your favourite meals.",
 
-  "prod.p12.name": "Fresh Croissants",
-  "prod.p12.desc": "Delicate, buttery pastries perfect for breakfast and coffee.",
+  "prod.p12.name": "Pickles & Sauces",
+  "prod.p12.desc": "A variety of pickles and sauces to complement your meals.",
 };
 
 const ar: Dict = {
@@ -271,15 +269,15 @@ const ar: Dict = {
   "strip.4": "تحضير بعناية",
   "strip.5": "خدمة ودودة",
 
-  "feat.eyebrow": "طازج من الفرن",
-  "feat.title": "أنواع الخبز المفضلة لدينا",
+  "feat.eyebrow": "منتجات طازجة من مخبزنا",
+  "feat.title": "تشكيلة منتجات مخبزنا",
   "feat.label": "خبز مميز",
 
   "cats.eyebrow": "اكتشفوا",
-  "cats.title": "تعرّفوا على أنواع الخبز",
+  "cats.title": "تعرّفوا على منتجات مخبزنا",
   "cats.text":
-    "من الخبز اليومي إلى الأنواع التقليدية المحبوبة، اختاروا ما يناسب ذوقكم.",
-  "cats.label": "تصفح أنواع الخبز",
+    "من المخبوزات الطازجة إلى المنتجات اليومية، اختاروا ما يناسب مائدتكم.",
+  "cats.label": "تصفحوا فئات المنتجات",
 
   "why.eyebrow": "لماذا تختاروننا",
   "why.title": "الخبز الجيد يبدأ بالاهتمام",
@@ -394,54 +392,54 @@ const ar: Dict = {
   "social.snapchat": "سناب شات",
 
   // Categories
-  "cat.milk.name": "الخبز الأبيض",
-  "cat.milk.desc": "خبز أبيض طري وطازج لكل يوم.",
+  "cat.milk.name": "خبز بالجبن",
+  "cat.milk.desc": "خبز طازج مخبوز ومغطى بالجبن.",
 
-  "cat.cheese.name": "خبز القمح الكامل",
-  "cat.cheese.desc": "خبز مغذٍ محضّر من دقيق القمح الكامل.",
+  "cat.cheese.name": "خبز البيتزا",
+  "cat.cheese.desc": "خبز مخبوز في الفرن ومغطى بإضافات البيتزا الشهية.",
 
-  "cat.yogurt.name": "الخبز المسطح التقليدي",
-  "cat.yogurt.desc": "خبز تقليدي يناسب الوجبات اليومية.",
+  "cat.yogurt.name": "لفائف خبز بالسمسم",
+  "cat.yogurt.desc": "لفائف خبز طرية ومغطاة بحبوب السمسم.",
 
-  "cat.butter.name": "خبز السمسم",
-  "cat.butter.desc": "خبز لذيذ مغطى بحبوب السمسم.",
+  "cat.butter.name": "منتجات الألبان الطازجة",
+  "cat.butter.desc": "منتجات ألبان طازجة ومعدة لتناسب مائدتكم.",
 
-  "cat.eggs.name": "خبز الباغيت",
-  "cat.eggs.desc": "خبز بقشرة ذهبية مقرمشة وداخل طري.",
+  "cat.eggs.name": "منتجات غذائية متنوعة",
+  "cat.eggs.desc": "تشكيلة من المنتجات الغذائية للاستخدام اليومي.",
 
   "cat.chicken.name": "الصمون واللفائف",
   "cat.chicken.desc": "صمون ولفائف طرية للفطور والسندويشات.",
 
-  "cat.farm.name": "الخبز التقليدي والمميز",
-  "cat.farm.desc": "اكتشفوا المزيد من أنواع الخبز التقليدية والمميزة.",
+  "cat.farm.name": "المخللات والصلصات",
+  "cat.farm.desc": "تشكيلة من المخللات والصلصات والمواد الغذائية.",
 
   // Products
-  "prod.p1.name": "خبز أبيض طازج",
-  "prod.p1.desc": "خبز أبيض طري وطازج يناسب الوجبات اليومية.",
+  "prod.p1.name": "خبز بالجبن",
+  "prod.p1.desc": "خبز طازج مخبوز ومحشو ومغطى بالجبن الذائب.",
 
   "prod.p2.name": "خبز القمح الكامل",
   "prod.p2.desc": "رغيف مغذٍ محضّر من دقيق القمح الكامل.",
 
-  "prod.p3.name": "خبز مسطح تقليدي",
-  "prod.p3.desc": "خبز مسطح تقليدي يناسب مختلف الوجبات.",
+  "prod.p3.name": "خبز البيتزا",
+  "prod.p3.desc": "خبز مخبوز في الفرن ومغطى بالجبن والزيتون وإضافات شهية.",
 
   "prod.p4.name": "خبز السمسم",
   "prod.p4.desc": "خبز طازج مغطى بحبوب السمسم العطرية.",
 
-  "prod.p5.name": "خبز باغيت فرنسي",
-  "prod.p5.desc": "قشرة ذهبية وداخل طري ولذيذ.",
+  "prod.p5.name": "لفائف خبز بالسمسم",
+  "prod.p5.desc": "لفائف خبز طرية وذهبية مغطاة بحبوب السمسم.",
 
   "prod.p6.name": "لفائف خبز طرية",
   "prod.p6.desc": "لفائف خفيفة وطرية، مثالية للفطور.",
 
-  "prod.p7.name": "خبز البرغر",
-  "prod.p7.desc": "خبز طري مناسب للبرغر والسندويشات المنزلية.",
+  "prod.p7.name": "لبن طازج",
+  "prod.p7.desc": "لبن طازج وكريمي يُقدّم في وعاء تقليدي.",
 
   "prod.p8.name": "خبز البيتا",
   "prod.p8.desc": "خبز متعدد الاستخدامات للسندويشات والمشاركة.",
 
-  "prod.p9.name": "خبز قروي تقليدي",
-  "prod.p9.desc": "خبز ريفي مستوحى من تقاليد الخَبز المحلية.",
+  "prod.p9.name": "منتجات غذائية متنوعة",
+  "prod.p9.desc": "تشكيلة من الأطعمة المعلبة والمواد الغذائية اليومية.",
 
   "prod.p10.name": "خبز التوست",
   "prod.p10.desc": "خبز طري مقطع، مثالي للتحميص والفطور السريع.",
@@ -449,226 +447,8 @@ const ar: Dict = {
   "prod.p11.name": "خبز النان",
   "prod.p11.desc": "خبز مسطح طري ولذيذ يناسب وجباتكم المفضلة.",
 
-  "prod.p12.name": "كرواسون طازج",
-  "prod.p12.desc": "معجنات هشة وغنية بالزبدة، مثالية للفطور والقهوة.",
+  "prod.p12.name": "مخللات وصلصات متنوعة",
+  "prod.p12.desc": "تشكيلة من المخللات والصلصات لترافق وجباتكم.",
 };
 
-const ku: Dict = {
-  "brand.name": "باهيك",
-  "nav.home": "سەرەکی",
-  "nav.about": "دەربارەی مە",
-  "nav.contact": "پەیوەندی",
-
-  "ui.skip": "بازدە سەر ناڤەڕۆکێ",
-  "ui.language": "زمان",
-  "ui.contactUs": "پەیوەندیێ ب مە بکە",
-  "ui.callUs": "تەلەفونێ بو مە بکە",
-  "ui.openMenu": "لیستێ ڤەکە",
-  "ui.closeMenu": "لیستێ دابخە",
-  "ui.callNumber": "تەلەفون بکە {phone}",
-  "ui.whatsapp": "واتسئاپ",
-  "ui.call": "تەلەفون",
-  "ui.callNow": "نوکە تەلەفون بکە",
-  "ui.order": "داخواز بکە",
-
-  "hero.badge": "تازە · ناڤخۆیی · ڕۆژانە دهێتە پێژاندن",
-  "hero.title1": "نانێ تازە ژ تەنوورێ،",
-  "hero.title2": "بۆ سفرا تە.",
-  "hero.text":
-    "جۆرەکێ ب تام ژ نانێ تازە ببینە، ژ نانێن نەریتی هەتا نانێ ڕۆژانە، ب ئاگەهداری بۆ خێزانا تە ئامادەکری.",
-  "hero.cta": "جۆرێن نانێ ببینە",
-  "hero.alt": "نانێ تازە و بەرهەمێن نانەواییێ",
-  "hero.made": "تازە پێژایی",
-  "hero.packed": "هەر ڕۆژ بەردەستە",
-
-  "strip.label": "ئەوێن مە جیاواز دکەن",
-  "strip.1": "هەر ڕۆژ نانێ تازە",
-  "strip.2": "پێکهاتەیێن باش",
-  "strip.3": "ڕێچکێن نەریتی",
-  "strip.4": "ب ئاگەهداری ئامادەکری",
-  "strip.5": "خزمەتا دۆستانە",
-
-  "feat.eyebrow": "تازە ژ تەنوورێ",
-  "feat.title": "نانێن دلخواز یێن مە",
-  "feat.label": "نانێن تایبەت",
-
-  "cats.eyebrow": "بزانە",
-  "cats.title": "جۆرێن نانێ ببینە",
-  "cats.text":
-    "ژ نانێ ڕۆژانە هەتا نانێن نەریتی یێن دلخواز، ئەو نانە هەلبژێرە یێ ب تامێ تە دێ.",
-  "cats.label": "جۆرێن نانێ ببینە",
-
-  "why.eyebrow": "بۆچی مە هەلبژێری",
-  "why.title": "نانێ باش ب ئاگەهداریێ دەست پێ دکەت",
-
-  "why.1.t": "هەر ڕۆژ تازە",
-  "why.1.d": "نانێ تازە بۆ سفرا ڕۆژانەیا تە.",
-
-  "why.2.t": "پێکهاتەیێن باش",
-  "why.2.d": "پێکهاتە ب ئاگەهداری هاتینە هەلبژارتن بۆ تامەکێ باش.",
-
-  "why.3.t": "تامێن نەریتی",
-  "why.3.d": "ڕێچکێن ناسکری ژ نەریتێن نانپێژاندنا ناڤخۆیی.",
-
-  "why.4.t": "ستانداردێن بلند یێن پاقژیێ",
-  "why.4.d": "پاقژی و ئاگەهداری د هەر هەنگاڤەکێ دا.",
-
-  "why.5.t": "خزمەتا دۆستانە",
-  "why.5.d": "ئەم یارمەتیێ ددەین دا نانێ دلخواز یێ خۆ ببژێری.",
-
-  "why.6.t": "هەلبژارتن بۆ هەمی کەسان",
-  "why.6.d": "جۆرێن نانێ بۆ تام و ژەمیێن جوداواز.",
-
-  "story.eyebrow": "تازەیی و نەریت",
-  "story.title": "حەزا نانێ د هەر پارچەیەکێ دا دیارە.",
-  "story.text":
-    "ئەم باوەر دکەین نانێ باش خەلکێن نێزیک دکەتەڤە. هەلبژارتنا مە تازەیی، تام و خۆشییا پارڤەکرنا نانێ دگەل خێزان و هەڤالان پێشکێش دکەت.",
-  "story.note":
-    "(ڤی چیرۆکی ل دویڤ زانیاریێن ڕاستەقینە یێن نانەواییێ بگۆڕە.)",
-  "story.cta": "چیرۆکا مە",
-  "story.alt": "نانێ تازە ژ نانەوایییا مە",
-
-  "aboutPrev.eyebrow": "دەربارەی مە",
-  "aboutPrev.title": "نانەوایییا ناڤخۆیی، ب ئاگەهداری",
-  "aboutPrev.text":
-    "ئەم نانێ تازە، تامێن ناسکری و خزمەتەکا دۆستانە پێشکێش دکەین. بۆ بەیانی یان ژەما خێزانێ، ئەم ل خزمەتا تە نە.",
-  "aboutPrev.cta": "دەربارەی {name}",
-  "aboutPrev.alt": "نانەوایییا مە",
-
-  "cta.title": "ل نانێ تازە دگەڕی؟",
-  "cta.text":
-    "تەلەفونێ بۆ مە بکە یان نامە بنێرە دا جۆرێن نانێ یێن ئەڤرو بزانیت و داخوازیا خۆ بکەیت.",
-  "cta.contactPage": "پەیوەندیێ ب مە بکە",
-
-  "about.eyebrow": "دەربارەی مە",
-  "about.title": "نانێ تازە، نێزیکی مالا تە.",
-  "about.alt": "نانەوایییا مە و تیمێ مە",
-
-  "about.b1.t": "چیرۆکا مە",
-  "about.b1.d":
-    "نانەوایییا مە ل سەر ئایدیایەکا سادە دهێتە ڤەکرن: نان دڤێت تازە، ب تام و ب ساناهی هەر ڕۆژ بهێتە خوارن.",
-
-  "about.b2.t": "کوالیتی",
-  "about.b2.d":
-    "ئەم گرنگیێ ددەین پێکهاتەیێن باش، تامەکێ خۆش و ئامادەکرنا ب ئاگەهداری یا هەر نانەکێ.",
-
-  "about.b3.t": "تازەیی",
-  "about.b3.d":
-    "ئەم نانێ تازە و خۆشییا وێ د ژەمیێن ڕۆژانە دا ب نرخ دزانین.",
-
-  "about.b4.t": "نەریت",
-  "about.b4.d":
-    "ئەم جۆرێن نانێ و نەریتێن نانپێژاندنێ یێن خەلک ناسی و حەز ژێ دکەن پێشکێش دکەین.",
-
-  "about.valuesEyebrow": "نرخێن مە",
-  "about.valuesTitle": "ئەوێن بۆ مە گرنگن",
-  "about.v1": "کوالیتی",
-  "about.v2": "تازەیی",
-  "about.v3": "نەریت",
-  "about.v4": "پاقژی",
-  "about.v5": "ڕازیبوونا کڕیاران",
-
-  "contact.eyebrow": "پەیوەندی",
-  "contact.title": "با ل سەر نانێ بئاخڤین.",
-  "contact.text":
-    "تەلەفون بکە، نامە بنێرە یان سەرەدانا مە بکە دا جۆرێن نانێ ببینی و داخوازیا خۆ بکەی.",
-  "contact.location": "ناڤنیشان",
-  "contact.hours": "دەمژمێرێن کارکرنێ",
-  "contact.send": "نامەیەکێ بۆ مە بنڤێسە",
-
-  "Saturday – Thursday": "شەمبی – پێنجشەمبی",
-  "Friday": "ئینی",
-
-  "form.name": "ناڤ",
-  "form.phone": "ژمارا تەلەفونێ",
-  "form.email": "ئیمێل",
-  "form.tabPhone": "تەلەفون",
-  "form.tabEmail": "ئیمێل",
-  "form.group": "چاوا ئەم پەیوەندیێ ب تە ڤە بکەین؟",
-  "form.subject": "بابەت",
-  "form.message": "نامە",
-  "form.submit": "نامەیێ بنێرە",
-  "form.sending": "دهێتە ناردن…",
-
-  "err.name": "تکایە ناڤێ خۆ بنڤێسە.",
-  "err.contact": "ژمارەیەکا تەلەفونێ یان ئیمێلەکا دروست بنڤێسە.",
-  "err.subject": "تکایە بابەتەکی زێدە بکە.",
-  "err.message": "تکایە لانیکەم 10 پیتان بنڤێسە.",
-
-  "form.thanks": "سوپاس، {name}.",
-  "form.notConnected":
-    "ناردن ب ڕێکا ماڵپەڕێ هێشتا نەهاتیە گرێدان. دا ڕاستەوخۆ پەیوەندیێ ب مە ڤە بکەی، هەمان نامە ب واتسئاپ بنێرە.",
-  "form.viaWhatsapp": "ب واتسئاپ بنێرە",
-
-  "footer.explore": "بگەڕێ",
-  "footer.products": "جۆرێن نانێ",
-  "footer.visit": "سەرەدان و پەیوەندی",
-  "footer.rights": "هەمی مافان پارێزراینە.",
-  "footer.desc":
-    "نانێ تازە، جۆرێن نەریتی و بەرهەمێن ڕۆژانە یێن نانەواییێ ببینە. ب تەلەفون یان واتسئاپ داخواز بکە.",
-
-  "social.instagram": "ئینستاگرام",
-  "social.facebook": "فەیسبووک",
-  "social.snapchat": "سناب چات",
-
-  // Categories
-  "cat.milk.name": "نانێ سپی",
-  "cat.milk.desc": "نانێ سپی یێ نەرم و تازە بۆ هەر ڕۆژەکێ.",
-
-  "cat.cheese.name": "نانێ گەنمێ تەمام",
-  "cat.cheese.desc": "نانێ بەسوود یێ ژ ئاردێ گەنمێ تەمام.",
-
-  "cat.yogurt.name": "نانێ تەخت یێ نەریتی",
-  "cat.yogurt.desc": "نانێ تەخت یێ نەریتی بۆ ژەمیێن ڕۆژانە.",
-
-  "cat.butter.name": "نانێ کەنجید",
-  "cat.butter.desc": "نانەکێ ب تام یێ ب تۆڤێ کەنجید ڤە.",
-
-  "cat.eggs.name": "نانێ باگێت",
-  "cat.eggs.desc": "نان ب پوستەکا زێڕین و ناڤەکێ نەرم.",
-
-  "cat.chicken.name": "نانێ بچووک و رول",
-  "cat.chicken.desc": "نانێن بچووک یێن نەرم بۆ بەیانی و ساندویچان.",
-
-  "cat.farm.name": "نانێن نەریتی و تایبەت",
-  "cat.farm.desc": "جۆرێن دی یێن نانێ نەریتی و تایبەت ببینە.",
-
-  // Products
-  "prod.p1.name": "نانێ سپی یێ تازە",
-  "prod.p1.desc": "نانێ سپی یێ نەرم و تازە بۆ ژەمیێن ڕۆژانە.",
-
-  "prod.p2.name": "نانێ گەنمێ تەمام",
-  "prod.p2.desc": "نانەکێ بەسوود یێ ژ ئاردێ گەنمێ تەمام.",
-
-  "prod.p3.name": "نانێ تەخت یێ نەریتی",
-  "prod.p3.desc": "نانێ تەخت یێ نەریتی بۆ جۆرەها ژەمیان.",
-
-  "prod.p4.name": "نانێ کەنجید",
-  "prod.p4.desc": "نانێ تازە یێ ب تۆڤێ کەنجید ڤە.",
-
-  "prod.p5.name": "نانێ باگێت یێ فەرەنسی",
-  "prod.p5.desc": "پوستەکا زێڕین و ناڤەکێ نەرم و ب تام.",
-
-  "prod.p6.name": "نانێن بچووک یێن نەرم",
-  "prod.p6.desc": "نانێن بچووک یێن سوک و نەرم، گونجای بۆ بەیانیێ.",
-
-  "prod.p7.name": "نانێ بەرگەر",
-  "prod.p7.desc": "نانێ نەرم یێ گونجای بۆ بەرگەر و ساندویچان.",
-
-  "prod.p8.name": "نانێ پیتا",
-  "prod.p8.desc": "نانێ پیتا یێ گونجای بۆ ساندویچ و پارڤەکرنێ.",
-
-  "prod.p9.name": "نانێ گوندی یێ نەریتی",
-  "prod.p9.desc": "نانێ گوندی یێ ژ نەریتێن نانپێژاندنا ناڤخۆیی.",
-
-  "prod.p10.name": "نانێ توست",
-  "prod.p10.desc": "نانێ پارچەکری یێ نەرم بۆ برژاندن و بەیانییا خێرا.",
-
-  "prod.p11.name": "نانێ نان",
-  "prod.p11.desc": "نانێ تەخت یێ نەرم و ب تام بۆ ژەمیێن دلخواز.",
-
-  "prod.p12.name": "کرواسۆنێن تازە",
-  "prod.p12.desc": "شیرینیێن نەرم و پڕ ژ کەرە، گونجای بۆ بەیانی و قەھوەیێ.",
-};
-
-export const dict: Record<Lang, Dict> = { en, ar, ku };
+export const dict: Record<Lang, Dict> = { en, ar };

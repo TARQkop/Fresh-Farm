@@ -5,8 +5,8 @@ const u = (id: string, w = 1600) => `https://images.unsplash.com/photo-${id}?aut
 
   export const images = {
   hero: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM (3).jpeg",
-  story: "/images/WhatsApp Image 2026-10-15 at 4.37.21 PM (1).jpeg",
-  about: "/images/WhatsApp Image 2026-10-15 at 4.37.21 PM (2).jpeg",
+  story: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM (3).jpeg",
+  about: "/images/WhatsApp Image 2026-10-15 at 4.37.24 PM.jpeg",
   milkBottle: "/images/WhatsApp Image 2026-10-15 at 4.37.21 PM.jpeg",
   milkGlass: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM (1).jpeg",
   cheeseWhite: "/images/WhatsApp Image 2026-10-15 at 4.37.22 PM (2).jpeg",

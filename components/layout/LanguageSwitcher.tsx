@@ -6,7 +6,7 @@ import { useI18n } from "@/lib/i18n/provider";
 import { cn } from "@/lib/utils";
 
 // Name shown on the button itself (short, in the language's own script).
-const SHORT: Record<Lang, string> = { en: "English", ar: "العربية", ku: "کوردی" };
+const SHORT: Record<Lang, string> = { en: "English", ar: "العربية" };
 
 // Language picker. `dropdown` (default): globe + current language, opens a small menu — used in the desktop header.
 // `inline`: three large buttons side by side — used inside the mobile menu. The choice is remembered by the provider.
@@ -29,7 +29,7 @@ export function LanguageSwitcher({ variant = "dropdown", className }: { variant?
 
   if (variant === "inline") {
     return (
-      <div role="group" aria-label={t("ui.language")} className={cn("grid grid-cols-3 gap-2", className)}>
+      <div role="group" aria-label={t("ui.language")} className={cn("grid grid-cols-2 gap-2", className)}>
         {LANGS.map((l) => (
           <button key={l.code} type="button" lang={l.code} aria-pressed={lang === l.code} onClick={() => setLang(l.code)}
             className={cn("t-hover inline-flex min-h-12 items-center justify-center gap-1.5 rounded-lg border px-2 text-[15px] font-semibold active:scale-[.97]",
