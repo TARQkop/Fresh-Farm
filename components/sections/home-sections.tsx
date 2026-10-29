@@ -1,9 +1,9 @@
 "use client";
-import { Leaf, ShieldCheck, MapPin, Sparkles, HeartHandshake, BadgeCheck, Phone, MessageCircle, ArrowRight } from "lucide-react";
+import { Leaf, ShieldCheck, MapPin, Sparkles, HeartHandshake, BadgeCheck, Phone, ArrowRight } from "lucide-react";
 import { categories } from "@/data/categories";
 import { images } from "@/data/images";
 import { getFeatured } from "@/lib/products";
-import { site, whatsappLink } from "@/lib/site";
+import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Marquee } from "@/components/ui/Marquee";
@@ -147,8 +147,7 @@ export function ContactCTA() {
       <h2 className="h-display mx-auto max-w-2xl text-[2rem] sm:text-5xl">{t("cta.title")}</h2>
       <p className="mx-auto mt-4 max-w-lg text-ink/75">{t("cta.text")}</p>
       <div className="mt-6 flex flex-col justify-center gap-3 sm:mt-8 sm:flex-row">
-        <Button href={whatsappLink()} variant="dark" className="w-full sm:w-auto"><MessageCircle size={18} /> {t("ui.whatsapp")}</Button>
-        <Button href={`tel:${site.phone}`} variant="outline" className="w-full sm:w-auto"><Phone size={18} /> {t("ui.callNow")}</Button>
+        <Button href={`tel:${site.phone}`} variant="dark" className="w-full sm:w-auto"><Phone size={18} /> {t("ui.callNow")}</Button>
         <Button href="/contact" variant="outline" className="w-full sm:w-auto">{t("cta.contactPage")}</Button>
       </div>
     </div></section>

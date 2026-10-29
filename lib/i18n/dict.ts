@@ -141,6 +141,9 @@ const en: Dict = {
 
   "Saturday – Thursday": "Saturday – Thursday",
   "Friday": "Friday",
+  "Every day": "Every day",
+  "Open 24 hours": "Open 24 hours",
+  "site.address": "Duhok – Zerka, opposite Sabah Al-Atroushi Mosque (VW9J+9V6)",
 
   "form.name": "Name",
   "form.phone": "Phone number",
@@ -171,7 +174,7 @@ const en: Dict = {
     "Discover fresh bread, traditional favourites and everyday bakery essentials. Contact us by phone or WhatsApp to order.",
 
   "social.instagram": "Instagram",
-  "social.facebook": "Facebook",
+  "social.tiktok": "TikTok",
   "social.snapchat": "Snapchat",
 
   // Categories
@@ -358,6 +361,9 @@ const ar: Dict = {
 
   "Saturday – Thursday": "السبت – الخميس",
   "Friday": "الجمعة",
+  "Every day": "كل يوم",
+  "Open 24 hours": "مفتوح على مدار الساعة",
+  "site.address": "دهوك – زركا – مقابل جامع صباح الأطروشي (VW9J+9V6)",
 
   "form.name": "الاسم",
   "form.phone": "رقم الهاتف",
@@ -388,7 +394,7 @@ const ar: Dict = {
     "اكتشفوا الخبز الطازج والأنواع التقليدية والمخبوزات اليومية. يمكنكم الطلب عبر الهاتف أو واتساب.",
 
   "social.instagram": "إنستغرام",
-  "social.facebook": "فيسبوك",
+  "social.tiktok": "تيك توك",
   "social.snapchat": "سناب شات",
 
   // Categories

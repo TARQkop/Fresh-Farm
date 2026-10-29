@@ -1,5 +1,5 @@
 "use client";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { site } from "@/lib/site";
 import { useI18n } from "@/lib/i18n/provider";
 import { cn } from "@/lib/utils";
@@ -13,14 +13,22 @@ function SnapchatIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-// Instagram / Facebook / Snapchat buttons. `tone="dark"` is for the dark footer, `tone="light"` for light pages.
+function TikTokIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.525.02c1.921 0 3.641.896 4.735 2.295 1.012 1.189 2.454 1.95 4.08 2.022V8.6a11.8 11.8 0 0 1-4.42-1.27v7.06c0 3.94-3.19 7.13-7.13 7.13s-7.13-3.19-7.13-7.13 3.19-7.13 7.13-7.13c.38 0 .76.03 1.13.09v4.42a2.67 2.67 0 1 0 1.6 2.45V.02h0z" />
+    </svg>
+  );
+}
+
+// Instagram / TikTok / Snapchat buttons. `tone="dark"` is for the dark footer, `tone="light"` for light pages.
 export function SocialLinks({ tone = "dark", className }: { tone?: "dark" | "light"; className?: string }) {
   const { t } = useI18n();
   const cls = cn("t-hover grid size-11 place-items-center rounded-lg border hover:border-orange motion-safe:hover:-translate-y-0.5 active:scale-[.96]",
     tone === "dark" ? "border-white/15 hover:text-orange" : "border-line hover:text-orange-dark");
   const items = [
     { key: "instagram", href: site.social.instagram, icon: <Instagram size={18} /> },
-    { key: "facebook", href: site.social.facebook, icon: <Facebook size={18} /> },
+    { key: "tiktok", href: site.social.tiktok, icon: <TikTokIcon /> },
     { key: "snapchat", href: site.social.snapchat, icon: <SnapchatIcon /> },
   ];
   return (

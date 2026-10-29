@@ -17,8 +17,8 @@ export function ContactContent() {
         <div>
           <div className="flex flex-col gap-3 sm:flex-row"><Button href={whatsappLink()} className="w-full sm:w-auto"><MessageCircle size={18} /> {t("ui.whatsapp")}</Button><Button href={`tel:${site.phone}`} variant="dark" className="w-full sm:w-auto"><Phone size={18} /> <span dir="ltr">{site.phone}</span></Button></div>
           <div className="mt-6">
-            <div className={row}><MapPin className="mt-1 shrink-0 text-orange" size={20} /><div><h2 className="font-semibold">{t("contact.location")}</h2><p className="text-muted">{site.address}</p></div></div>
-            <div className={row}><Clock className="mt-1 shrink-0 text-orange" size={20} /><div><h2 className="font-semibold">{t("contact.hours")}</h2><dl className="text-muted">{site.hours.map(([d, h]) => <div key={d} className="flex flex-wrap items-baseline justify-between gap-x-4 sm:justify-start"><dt className="sm:w-44">{t(d)}</dt><dd dir="ltr">{h}</dd></div>)}</dl></div></div>
+            <div className={row}><MapPin className="mt-1 shrink-0 text-orange" size={20} /><div><h2 className="font-semibold">{t("contact.location")}</h2><a href={site.mapLink} target="_blank" rel="noopener noreferrer" className="text-muted underline-offset-4 hover:text-orange-dark hover:underline">{t("site.address")}</a></div></div>
+            <div className={row}><Clock className="mt-1 shrink-0 text-orange" size={20} /><div><h2 className="font-semibold">{t("contact.hours")}</h2><dl className="text-muted">{site.hours.map(([d, h]) => <div key={d} className="flex flex-wrap items-baseline justify-between gap-x-4 sm:justify-start"><dt className="sm:w-44">{t(d)}</dt><dd>{t(h)}</dd></div>)}</dl></div></div>
             <div className={row}><SocialLinks tone="light" /></div>
           </div>
           <div className="mt-6 overflow-hidden rounded-[var(--radius-card)] border border-line">

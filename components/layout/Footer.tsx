@@ -23,9 +23,9 @@ export function Footer() {
         <div><h3 className={h}>{t("footer.products")}</h3><ul className="space-y-1 text-sm lg:space-y-3">{categories.map((c) => <li key={c.id} className="py-1.5 text-white/70 lg:py-0">{catName(c)}</li>)}</ul></div>
         <div className="col-span-2 sm:col-span-1"><h3 className={h}>{t("footer.visit")}</h3>
           <ul className="space-y-1 text-sm text-white/70 lg:space-y-3">
-            <li className="flex gap-3 py-1.5 lg:py-0"><MapPin size={16} className="mt-0.5 shrink-0 text-orange" />{site.address}</li>
+            <li className="flex gap-3 py-1.5 lg:py-0"><MapPin size={16} className="mt-0.5 shrink-0 text-orange" /><a className={l} href={site.mapLink} target="_blank" rel="noopener noreferrer">{t("site.address")}</a></li>
             <li className="flex items-center gap-3 lg:items-start"><Phone size={16} className="shrink-0 text-orange lg:mt-0.5" /><a className={l} dir="ltr" href={`tel:${site.phone}`}>{site.phone}</a></li>
-            <li className="flex items-center gap-3 lg:items-start"><Mail size={16} className="shrink-0 text-orange lg:mt-0.5" /><a className={l} href={`mailto:${site.email}`}>{site.email}</a></li>
+            {site.email && <li className="flex items-center gap-3 lg:items-start"><Mail size={16} className="shrink-0 text-orange lg:mt-0.5" /><a className={l} href={`mailto:${site.email}`}>{site.email}</a></li>}
           </ul>
         </div>
       </div>
